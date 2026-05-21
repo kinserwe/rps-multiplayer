@@ -10,17 +10,6 @@ services:
     depends_on:
       - db
       - redis
-  frontend:
-    build:
-      context: ./frontend
-      args:
-        VITE_API_URL: ${VITE_API_URL:-http://localhost:8001}
-    ports:
-      - "3000:80"
-    container_name: rps-frontend
-    restart: always
-    depends_on:
-      - backend
   db:
     image: postgres:17.9-alpine
     container_name: rps-psql
